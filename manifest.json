@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Taskforce",
+  "version": "3.2",
+  "version_name": "3.2",
+  "minimum_chrome_version": "114",
+  "description": "Per-org task manager for Salesforce. Auto-detects your org and keeps tasks where they belong.",
+  "author": "Hammad Shahid - hashahid3d@gmail.com",
+  "permissions": ["sidePanel", "storage", "tabs"],
+  "host_permissions": ["https://*.salesforce.com/*", "https://*.force.com/*", "https://*.cloudforce.com/*", "https://*.live.site.com/*", "https://*.salesforce-setup.com/*"],
+  "action": {
+    "default_title": "SF Tasks"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

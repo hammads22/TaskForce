@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Taskforce</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <header class="settings-header">
+      <div>
+        <h1>Settings</h1>
+        <p>Customize your Taskforce experience. Changes save automatically.</p>
+      </div>
+      <div class="theme-quick-toggle" role="radiogroup" aria-label="Theme">
+        <button class="theme-quick-btn active" data-theme="dark" title="Dark">☾</button>
+        <button class="theme-quick-btn" data-theme="system" title="System">💻</button>
+        <button class="theme-quick-btn" data-theme="light" title="Light">☀</button>
+      </div>
+    </header>
+
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" data-tab="appearance">🎨 Appearance</button>
+      <button class="tab-btn" data-tab="keyboard">⌨ Keyboard</button>
+      <button class="tab-btn" data-tab="preferences">⚙ Preferences</button>
+    </nav>
+
+    <!-- ═══ APPEARANCE ═══ -->
+    <div class="tab-panel active" id="panel-appearance">
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Theme</div>
+            <div class="section-subtitle">Choose light, dark, or follow your system</div>
+          </div>
+        </div>
+        <div class="theme-segmented" role="radiogroup">
+          <button class="theme-seg-btn" data-theme="light">☀ Light</button>
+          <button class="theme-seg-btn active" data-theme="system">💻 System</button>
+          <button class="theme-seg-btn" data-theme="dark">☾ Dark</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Font size</div>
+            <div class="section-subtitle">Adjust text size across the entire app</div>
+          </div>
+          <span class="font-size-value" id="font-size-value">13px</span>
+        </div>
+        <div class="slider-group">
+          <div class="slider-labels">
+            <span id="label-sm">Small</span>
+            <span id="label-default" class="active-label">Default</span>
+            <span id="label-lg">Large</span>
+            <span id="label-xl">Accessible</span>
+          </div>
+          <div class="slider-track">
+            <input type="range" min="11" max="17" value="13" step="2" id="font-size-slider">
+          </div>
+        </div>
+        <div class="preview-card" id="preview-card">
+          <div class="preview-label">Preview</div>
+          <div class="preview-task">
+            <div class="preview-checkbox"></div>
+            <div class="preview-content">
+              <div class="preview-task-title">Refresh sandbox for Acme Corp integration testing</div>
+              <div class="preview-task-meta">Due Aug 15 · Acme Corp</div>
+              <div class="preview-badges">
+                <span class="preview-badge blocked">Blocked</span>
+                <span class="preview-badge overdue">Overdue</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Color-coded status badges</div>
+            <div class="toggle-desc">Show red, amber, and green badges on task statuses</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle-status-colors" checked>
+            <label for="toggle-status-colors"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Show org name on tasks</div>
+            <div class="toggle-desc">Display which Salesforce org each task belongs to</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle-org-badge" checked>
+            <label for="toggle-org-badge"></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ KEYBOARD ═══ -->
+    <div class="tab-panel" id="panel-keyboard">
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Shortcut reference</div>
+            <div class="section-subtitle">All active keyboard shortcuts</div>
+          </div>
+        </div>
+        <div class="kb-grid">
+          <div class="kb-binding"><span class="kb-action">Move focus down</span><span class="kb-keys"><span class="kb-key">J</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Move focus up</span><span class="kb-keys"><span class="kb-key">K</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Open task detail</span><span class="kb-keys"><span class="kb-key wide">Enter</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Focus search bar</span><span class="kb-keys"><span class="kb-key">/</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Toggle status filter</span><span class="kb-keys"><span class="kb-key">S</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Clear all filters</span><span class="kb-keys"><span class="kb-key wide">Esc</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Cycle task status</span><span class="kb-keys"><span class="kb-key">Ctrl</span><span class="kb-key">.</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Open org switcher</span><span class="kb-keys"><span class="kb-key">Ctrl</span><span class="kb-key">O</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Toggle due date filter</span><span class="kb-keys"><span class="kb-key">D</span></span></div>
+          <div class="kb-binding"><span class="kb-action">Quick-create task</span><span class="kb-keys"><span class="kb-key">N</span></span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Custom bindings</div>
+            <div class="section-subtitle">Remap any shortcut to a different key</div>
+          </div>
+          <button class="btn-ghost" id="reset-all-bindings">Reset all to defaults</button>
+        </div>
+        <div id="custom-bindings"></div>
+      </div>
+
+    </div>
+
+    <!-- ═══ PREFERENCES ═══ -->
+    <div class="tab-panel" id="panel-preferences">
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Export defaults</div>
+            <div class="section-subtitle">What gets included when you export tasks</div>
+          </div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Include task notes</div>
+            <div class="toggle-desc">Export notes alongside task titles and metadata</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle-export-notes" checked>
+            <label for="toggle-export-notes"></label>
+          </div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <div class="toggle-label">Include org name</div>
+            <div class="toggle-desc">Add the Salesforce org column to exports</div>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle-export-org" checked>
+            <label for="toggle-export-org"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Default org on launch</div>
+            <div class="section-subtitle">Which org loads when you open Taskforce</div>
+          </div>
+        </div>
+        <select class="form-select" id="default-org">
+          <option value="last">Last used org</option>
+          <option value="primary">Primary org</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Keyboard config</div>
+            <div class="section-subtitle">Sync your shortcuts between machines</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-ghost" id="export-bindings">Export bindings</button>
+          <button class="btn-ghost" id="import-bindings">Import bindings</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="settings.js"></script>
+</body>
+</html>

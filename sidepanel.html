@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taskforce</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header">
+      <div class="header-left">
+        <span class="logo">⚡</span>
+        <div class="header-info">
+          <div class="header-top-row">
+            <h1>Taskforce</h1>
+            <div class="view-toggle">
+              <button id="view-org" class="view-btn active" title="Current org">📋</button>
+              <button id="view-dash" class="view-btn" title="All orgs">🌐</button>
+            </div>
+          </div>
+          <div id="org-display">
+            <span id="org-name" class="org-label">Detecting org…</span>
+            <button id="org-edit-btn" class="org-edit-btn" title="Rename org">✎</button>
+          </div>
+          <div id="org-edit-row" class="org-edit-row hidden">
+            <input type="text" id="org-edit-input" class="org-edit-input" maxlength="40" placeholder="Org name…">
+            <button id="org-edit-save" class="org-edit-action">✓</button>
+            <button id="org-edit-cancel" class="org-edit-action">✕</button>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-settings" class="icon-btn" title="Settings">⚙</button>
+        <div class="export-menu-wrap">
+          <button id="btn-menu" class="icon-btn" title="Export">⋯</button>
+          <div id="export-menu" class="export-menu hidden">
+            <div id="export-copy-list" class="menu-item">📋 Copy active as list</div>
+            <div id="export-json-org" class="menu-item">💾 Export this org (JSON)</div>
+            <div id="export-json-all" class="menu-item">🗂 Export all orgs (JSON)</div>
+            <div class="menu-sep"></div>
+            <div id="import-json" class="menu-item">📥 Import tasks (JSON)</div>
+          </div>
+        </div>
+        <button id="btn-clear-done" class="icon-btn" title="Clear completed" style="display:none">🗑</button>
+      </div>
+    </header>
+
+    <!-- Error banner -->
+    <div id="state-error" class="error-banner hidden">
+      <span id="error-msg"></span>
+      <button id="error-dismiss" class="error-dismiss">✕</button>
+    </div>
+
+    <!-- No-org state (org view) -->
+    <div id="state-no-org" class="state-message hidden">
+      <div class="state-icon">🔌</div>
+      <p>Open a Salesforce org to see your tasks.</p>
+    </div>
+
+    <!-- Dashboard view -->
+    <div id="dashboard-view" class="hidden">
+      <div id="dashboard-content" class="dashboard-content"></div>
+      <div id="dash-empty" class="state-message">
+        <div class="state-icon">✨</div>
+        <p>No tasks across any org yet.</p>
+      </div>
+    </div>
+
+    <!-- Org view (task list) -->
+    <div id="org-view">
+      <!-- Add task form -->
+      <form id="add-form" class="add-form">
+        <input type="text" id="task-input" placeholder="Add a task for this org…" autocomplete="off" maxlength="500"/>
+        <div class="add-row">
+          <div class="add-row-left">
+            <div class="priority-select">
+              <button type="button" id="btn-priority" class="chip" data-priority="medium" title="Priority">
+                <span class="prio-dot medium"></span> Med
+              </button>
+              <div id="priority-dropdown" class="dropdown hidden">
+                <div class="dropdown-item" data-priority="high"><span class="prio-dot high"></span> High</div>
+                <div class="dropdown-item" data-priority="medium"><span class="prio-dot medium"></span> Medium</div>
+                <div class="dropdown-item" data-priority="low"><span class="prio-dot low"></span> Low</div>
+              </div>
+            </div>
+            <button type="button" id="btn-color" class="color-swatch" title="Color tag"></button>
+            <div id="color-picker" class="color-picker hidden"></div>
+          </div>
+          <button type="submit" id="btn-add" class="btn-add">Add</button>
+        </div>
+      </form>
+
+      <!-- Filter bar -->
+      <div id="filter-bar" class="filter-bar">
+        <input type="text" id="filter-search" class="filter-search" placeholder="🔍 Filter tasks…" autocomplete="off">
+        <div class="filter-chips">
+          <button class="filter-chip" data-filter-status="active">Active</button>
+          <button class="filter-chip" data-filter-status="waiting">Waiting</button>
+          <button class="filter-chip" data-filter-status="blocked">Blocked</button>
+          <button class="filter-chip" data-filter-status="done">Done</button>
+          <span class="filter-sep"></span>
+          <button class="filter-chip" data-filter-due="today">Today</button>
+          <button class="filter-chip" data-filter-due="week">This Week</button>
+          <button class="filter-chip" data-filter-due="overdue">Overdue</button>
+        </div>
+        <button id="filter-clear" class="filter-clear" title="Clear filters" style="display:none">✕</button>
+      </div>
+
+      <!-- Task list -->
+      <div id="task-list-container">
+        <div id="task-list" class="task-list"></div>
+        <div id="state-empty" class="state-message">
+          <div class="state-icon">📝</div>
+          <p>No tasks yet. Add one above.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <span id="task-count">0 tasks</span>
+    </footer>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
