@@ -1,4 +1,4 @@
-# ⚡ Taskforce (v3.2)
+# ⚡ Taskforce
 
 > **Per-org task manager for Salesforce.** Auto-detects your active Salesforce environment and keeps your tasks isolated where they belong.
 
